@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+    {% if category %}
+    {{category.description|truncatewords:100}}
+    {% else %}
+    ABC SHOP ......................
+    {% endif%}
+{% endblock %}
+
+{% block title %}
+    {% if category %}
+    {{category.name}}
+    {% else %}
+    see our new collections ......................
+    {% endif %}
+{% endblock %}
+
+<!---------------------------block content ------------------------------>
+
+{% block content %}
+
+{% if category %}
+<div>
+    <div>
+        <p><a href="{% url 'shop:allProCat' %}">our product collections</a></p>
+    </div>
+</div>
+{% endif %}
+
+<div>
+{% if category %}
+<div>
+    <img src="{{category.image.url}}">
+</div>
+<div>
+    <h4>{{category.name}}</h4>
+    <p>{{category.description}}</p>
+</div>
+
+{% else %}
+<div>
+    <img src="{% static 'img/banner.png' %}" height="300px" width="1500px">
+</div>
+<div>
+    <h4>our product collections </h4>
+    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+</div>
+{% endif %}
+</div>
+
+<div>
+    <div>
+        {% for product in products %}
+        <div>
+            <a href="{{product.get_url}}"><img src="{{product.image.url}}" alt="{{product.name}}" height="100px" width="100px"></a>
+            <div>
+                <h4>{{product.name}}</h4>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+        {{product.description}}
+{% endblock %}
+
+{% block title %} 
+    {{product.name}}
+{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <p><a href="{% url 'shop:allProCat' %}">Home</a>| <a href="{product.category.get_url}">{{product.category}}</a>|{{product.name}}</p>
+    </div>
+</div>
+
+<div>
+    <div>
+        <div>
+            <img src="{{product.image.url}}">
+        </div>
+        <div>
+            <h2>{{product.name}}</h2>
+            <p>{{product.price}}</p>
+            <p>{{product.description}}</p>
+
+            {% if product.stock <= 0 %}
+            <p><b>out of stock </b>
+            {% else %}
+
+                <a href="">add to cart</a>
+            {% endif %}
+        </div>   
+    </div>
+</div>
+
+{% endblock %}
