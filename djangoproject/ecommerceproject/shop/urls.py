@@ -7,6 +7,4 @@ urlpatterns = [
     path('<slug:c_slug>/',views.allProCat,name='product_by_category'),
     path('<slug:c_slug>/<slug:product_slug>/',views.proDetails,name='proDetails')
     
-    
-    
 ]

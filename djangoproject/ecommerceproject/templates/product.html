@@ -10,30 +10,32 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <div>
+<div class="row my_prod_row_class ">
+    <div class="mx_auto ">
         <p><a href="{% url 'shop:allProCat' %}">Home</a>| <a href="{product.category.get_url}">{{product.category}}</a>|{{product.name}}</p>
     </div>
 </div>
 
-<div>
+<div class="container">
+<div class="row">
     <div>
-        <div>
-            <img src="{{product.image.url}}">
+        <div class="col-md-12 col-sm-12 col-lg-12 text-center">
+            <img src="{{product.image.url}}" style="max-width: 18rem;">
         </div>
         <div>
-            <h2>{{product.name}}</h2>
-            <p>{{product.price}}</p>
-            <p>{{product.description}}</p>
+            <h1 class="my_prod_title">{{product.name}}</h1>
+            <p>${{product.price}}</p>
+            <p class="my_title">Product Description</p>
+            <p class="text-justify my_prod_text ">{{product.description}}</p>
 
             {% if product.stock <= 0 %}
-            <p><b>out of stock </b>
+            <p class="text-justify my_prod_text"><b>out of stock </b>
             {% else %}
 
-                <a href="">add to cart</a>
+                <a class="btn btn-secondary text-center">add to cart</a>
             {% endif %}
         </div>   
     </div>
 </div>
-
+</div>
 {% endblock %}
