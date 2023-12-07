@@ -32,7 +32,7 @@
 <div>
 {% if category %}
 <div>
-    <img src="{{category.image.url}}">
+    <img src="{{category.image.url}}"style="max-width: 25rem;" >
 </div>
 <div>
     <h4>{{category.name}}</h4>
@@ -52,7 +52,7 @@
 
 <div class="container">
     <div class="row mx_auto mt-5">
-        {% for product in products %}
+        {% for product in products.object_list %}
         <div class="my_bottom_margin col-md-3 col-9 col-sm-12 mb-3">
             <div class="card text-center " style="width: 18rem;">
             <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}" height="100px" width="100px"></a>
@@ -63,7 +63,16 @@
         </div>
         </div>
         {% endfor %}
-        
+        <div class="mx-auto">
+            {% if products.paginator.num_pages > 1 %}
+            <hr>
+            <div class="text-center">
+                {% for pg in products.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif%}">{{pg}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div> 
 

@@ -8,11 +8,11 @@
 {% block title %} 
     {{product.name}}
 {% endblock %}
-
+<!----------------block content -------------------------------------->>
 {% block content %}
 <div class="row my_prod_row_class ">
     <div class="mx_auto ">
-        <p><a href="{% url 'shop:allProCat' %}">Home</a>| <a href="{product.category.get_url}">{{product.category}}</a>|{{product.name}}</p>
+        <p><a href="{% url 'shop:allProCat' %}">Home</a>| <a href="{{product.category.get_url}}">{{product.category}}</a>|{{product.name}}</p>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
             <img src="{{product.image.url}}" style="max-width: 18rem;">
         </div>
         <div>
-            <h1 class="my_prod_title">{{product.name}}</h1>
+            <h1 class="my_prod_title" style="font-weight: bold;">{{product.name}}</h1>
             <p>${{product.price}}</p>
             <p class="my_title">Product Description</p>
             <p class="text-justify my_prod_text ">{{product.description}}</p>
