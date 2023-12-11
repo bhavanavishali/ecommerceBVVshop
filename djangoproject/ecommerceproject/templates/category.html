@@ -68,7 +68,7 @@
             <hr>
             <div class="text-center">
                 {% for pg in products.paginator.page_range %}
-                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif%}">{{pg}}</a>
+                    <a href="?pages={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif%}">{{pg}}</a>
                 {% endfor %}
             </div>
         </div>

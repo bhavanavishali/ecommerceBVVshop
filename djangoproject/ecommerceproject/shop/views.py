@@ -13,15 +13,15 @@ def allProCat(request,c_slug=None):
         products_list = Product.objects.all().filter(category=c_page,available=True)
     else:
         products_list = Product.objects.all().filter(available=True)
-    paginator = Paginator(products_list,6)
+    paginator1 = Paginator(products_list,6)
     try:
-        page = int(request.GET.get('page','1'))
+        page1 = int(request.GET.get('pages','1'))
     except:
-        page = 1
+        page1 = 1
     try:
-        products = paginator.page(page)
+        products = paginator1.page(page1)
     except (EmptyPage,InvalidPage):
-        products = paginator.page(paginator.num_pages)
+        products = paginator1.page(paginator1.num_pages)
     return render(request,'category.html',{'products':products,'category':c_page})
 
 def proDetails(request,c_slug,product_slug):
