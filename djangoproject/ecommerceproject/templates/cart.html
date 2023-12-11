@@ -63,13 +63,13 @@
                     {% if cart_item.quantity < cart_item.product.stock %}
                     <td>
                         <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="my_custom_a"><i class="fa fa-plus custom_icon"></i></a>&nbsp;
-                        <a href="" class="my_custom_a"><i class="fa fa-minus custom_icon"></i></a>
+                        <a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="my_custom_a"><i class="fa fa-minus custom_icon"></i></a>
                         &nbsp;<a href="" class="my_custom_icon"><i class="fa fa-trash custom_icon"></i></a>
                     </td>
                     {% else %}
                     <td>
                        
-                        &nbsp;<a href="" class="my_custom_a"><i class="fa fa-minus custom_icon"></i></a>
+                        &nbsp;<a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="my_custom_a"><i class="fa fa-minus custom_icon"></i></a>
                         &nbsp;<a href="" class="my_custom_icon"><i class="fa fa-trash custom_icon"></i></a>
                     </td>
                     {% endif %}
